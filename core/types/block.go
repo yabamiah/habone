@@ -1,4 +1,4 @@
-package core
+package types
 
 import (
 	"bytes"
@@ -6,18 +6,16 @@ import (
 	"time"
 )
 
-type BlockNonce []byte
-
 // Uint64ToByte converts a uint64 to a byte slice
-func Uint64ToByte(val uint64) BlockNonce {
-	var nonce BlockNonce
+func Uint64ToByte(val uint64) []byte {
+	b := make([]byte, 8)
 	for i := uint64(0); i < 8; i++ {
-		nonce[i] = byte((val >> (i * 8)) & 0xff)
+		b[i] = byte((val >> (i * 8)) & 0xff)
 	}
-	return nonce
+	return b
 }
 
-func ByteToUint64(b BlockNonce) uint64 {
+func ByteToUint64(b []byte) uint64 {
 	var val uint64
 	for i := uint64(0); i < 8; i++ {
 		val |= uint64(b[i]) << (i * 8)

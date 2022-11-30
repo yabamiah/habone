@@ -1,4 +1,4 @@
-package core
+package types
 
 import (
 	"bytes"
@@ -26,6 +26,7 @@ func (chain *Blockchain) AddBlock(data string) (err error) {
 	if !IsBlockValid(*new, *prevBlock) {
 		return err
 	}
+	
 	chain.Blocks = append(chain.Blocks, new)
 	return nil
 }
@@ -58,5 +59,3 @@ func (chain *Blockchain) GetLastBlock() int64 {
 
 	return lastBlockIndex
 }
-
-func (chain *Blockchain) Node

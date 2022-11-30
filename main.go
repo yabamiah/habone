@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/yabamiah/habone/core"
+	"github.com/yabamiah/habone/core/types"
 )
 
 func main() {
-	chain := core.InitBlockChain()
+	chain := types.InitBlockChain()
 
 	if chain.AddBlock("First Block after Genesis") != nil {
 		fmt.Println("Error adding block")
